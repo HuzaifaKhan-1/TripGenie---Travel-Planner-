@@ -2553,3 +2553,86 @@ label {
 .nav-links a, .mobile-menu a, #hero h2, #hero p, .section-header h2, .section-header p {
     animation: langFade 0.5s ease-out forwards;
 }
+
+/* Signup Form */
+.signup-form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow-lg);
+  animation: slideDown 0.5s ease forwards;
+  position: relative;
+}
+
+.signup-form-container h2 {
+  margin-bottom: var(--space-4);
+  text-align: center;
+  font-size: var(--text-2xl);
+}
+
+.signup-form-container input {
+  width: 100%;
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+}
+
+.close-signup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: var(--text-xl);
+  cursor: pointer;
+}
+
+.signup-form-container textarea {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-4);
+  resize: vertical;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: var(--text-sm);
+}
+
+
+/* Slide animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+body.blurred > *:not(#signupOverlay) {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
