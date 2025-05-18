@@ -1085,6 +1085,70 @@ label {
     margin-bottom: 0;
 }
 
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+
+/* === Day Block Enhancements === */
+.day-block {
+    border: 2px dashed var(--primary);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #f9f9f9;
+    animation: fadeInUp 0.5s ease both;
+    position: relative;
+}
+
+.activity {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--light-border);
+    min-height: 60px;
+}
+
+.add-activity-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.add-activity-button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Simulated placeholder for contenteditable */
+.editable:empty::before {
+    content: attr(data-placeholder);
+    color: #aaa;
+    font-style: italic;
+    pointer-events: none;
+    display: block;
+}
+
+/* Placeholder fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* ===== Destinations Section ===== */
 .destinations-grid {
@@ -2554,6 +2618,27 @@ label {
     animation: langFade 0.5s ease-out forwards;
 }
 
+/* Signup Overlay */
+.signup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 100px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.signup-overlay.hidden {
+  display: none;
+}
+
 /* Signup Form */
 .signup-form-container {
   background: white;
@@ -2635,4 +2720,3 @@ body.blurred > *:not(#signupOverlay) {
   pointer-events: none;
   user-select: none;
 }
-
