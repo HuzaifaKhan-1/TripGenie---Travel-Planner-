@@ -30,7 +30,22 @@
     
     <!-- AOS Library for Scroll Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+    <!--Google Map API-->
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDEhwfS14DWTSzE8jgFwoqKcQydHc7Rf8&callback=init360Tours">
+
     
+</script>
+
+    <!-- Include Pannellum -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,564&display=swap" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -89,11 +104,28 @@
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-overlay"></div>
+        <div class="slideshow-3d">
+    <div class="carousel">
+        <img src="pisa.jpg" alt="Pisa">
+        <img src="colloseum.jpg" alt="Colloseum">
+        <img src="statue-of-liberty.jpg" alt="Statue of Liberty">
+        <img src="burj-khalifa.jpg" alt="Burj Khalifa">
+        <img src="ubud-bali-indonesia.jpg" alt="Ubud Bali">
+        <img src="germany.jpg" alt="Germany">
+        <img src="strip.jpg" alt="Vegas Strip">
+        <img src="mount-fuji.jpg" alt="Mount Fuji">
+        <img src="bangkok-palace.jpg" alt="Bangkok Palace">
+        <img src="sheikh-zayed-mosque.jpg" alt="Sheikh Zayed Mosque">
+        <img src="tajmahal.jpg" alt="Taj Mahal">
+        <img src="eiffelTower.jpg" alt="Eiffel Tower">
+    </div>
+</div>
+<div class="hero-overlay"></div>
+
         <div class="container">
             <div data-aos="fade-up" data-aos-duration="1000">
-                <h2>Let AI Plan Your Perfect Trip</h2>
-                <p>Create, customize, and share your travel itineraries with TripGenie's smart planning tools.</p>
+                <h2 class="hero-3d-text" id="hero3DText" style="font-family: 'Playfair Display' ", font-optical-sizing: >Let AI Plan Your Perfect Trip</h2>
+                <p class="hero-3d-text" id="hero3DText">Create, customize, and share your travel itineraries with TripGenie's smart planning tools.</p>
                 <div class="hero-buttons">
                     <button class="primary-button">Start Planning Now</button>
                     <button class="secondary-button"><i class="fas fa-play-circle mr-2"></i> Watch How It Works</button>
@@ -527,7 +559,7 @@
                 </div>
                 
                 <div class="tour-preview" data-aos="fade-left">
-                    <div class="tour-image-container">
+                    <div class="tour-image-container panorama-viewer" id="panorama-container">
                         <img id="tourImage" src="https://pixabay.com/get/g80a39ef22a8960cb226de4d8d9c951bf838822e9a25b0255f854bf1f07f03a013e82d928a5f3923b75b293a5b778d7f37794c19e4913922b733e95c7f62f2b6b_1280.jpg" alt="Ooty Botanical Gardens">
                         <button class="play-button">
                             <i class="fas fa-play"></i>
