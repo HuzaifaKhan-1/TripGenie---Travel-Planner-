@@ -893,149 +893,74 @@ function initMultilingualSupport() {
         updateLanguage(savedLanguage);
     }
 }
-
-// 360-degree tours functionality
+// Video preview functionality (without panorama)
 function init360Tours() {
-    // 360-degree panorama viewer using Pannellum library
-    const virtualTourContainer = document.querySelector('.tour-preview');
-    const panoramaContainer = document.getElementById('panorama-container');
-    
-    if (!virtualTourContainer || !panoramaContainer) return;
-    
-    // Public panorama images from pannellum.org demo site
-    const panoramas = {
-        'Ooty Botanical Gardens': 'https://pannellum.org/images/cerro-toco-0.jpg',
-        'Doddabetta Peak': 'https://pannellum.org/images/alma.jpg',
-        'Nilgiri Mountain Railway': 'https://pannellum.org/images/bma-1.jpg',
-        'Pykara Lake': 'https://pannellum.org/images/jfk.jpg'
-    };
-    
-    // Initialize the viewer
-    let viewer = null;
-    
-    // Function to start a 360 tour
-    function start360Tour(location) {
-        console.log("Starting 360 tour for:", location);
-        
-        // Get the panorama image
-        let panoramaImage = panoramas[location];
-        if (!panoramaImage) {
-            panoramaImage = fallbackPanoramas[location];
-            if (!panoramaImage) {
-                console.error("No panorama found for location:", location);
-                return;
+    document.addEventListener("DOMContentLoaded", function () {
+        const tourVideo = document.getElementById('tourVideo');
+        const tourName = document.getElementById('tourName');
+        const tourDescription = document.getElementById('tourDescription');
+        const tourLocationsList = document.getElementById('tour-locations-list');
+
+        const tourLocations = [
+            {
+                name: "Ooty Botanical Gardens",
+                description: "Experience the 55-acre garden with over 650 species of plants and flowers.",
+                videoUrl: "https://www.youtube.com/embed/VNZxKU4zDwM?si=-fPMwDqjaag-bXeA",
+                image: "https://experiencekerala.in/image-uploads/1468473509.Ooty_Lake.jpg"
+            },
+            {
+                name: "Doddabetta Peak",
+                description: "Panoramic views from the highest peak in the Nilgiris mountain range.",
+                videoUrl: "https://www.youtube.com/embed/cWyhKEYQpZE?si=Z_mhAm2kgV3kLcSt",
+                image: "https://images.trvl-media.com/media/content/shared/images/travelguides/destination/6049947/Tamil-Nadu-97368.jpg"
+            },
+            {
+                name: "Nilgiri Mountain Railway",
+                description: "UNESCO heritage train ride.",
+                videoUrl: "https://www.youtube.com/embed/gLUrGSAMBLw?si=EGSUsu8koqZO6WTD",
+                image: "https://th.bing.com/th/id/OIP.9yO5pXwREN2PQ3DnooF5CAHaE8?w=277&h=185&c=7&r=0&o=5&cb=iwc2&dpr=1.4&pid=1.7"
+            },
+            {
+                name: "Pykara Lake",
+                description: "A serene lake surrounded by forests and waterfalls.",
+                videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Pykara_Lake_1.jpg/800px-Pykara_Lake_1.jpg"
             }
-        }
-        
-        // Show loading indicator
-        panoramaContainer.innerHTML = '<div class="loading-spinner"></div>';
-        panoramaContainer.style.display = 'block';
-        panoramaContainer.classList.add('active');
-        
-        // Create the panorama viewer container
-        const viewerContainer = document.createElement('div');
-        viewerContainer.id = 'panorama';
-        viewerContainer.style.width = '100%';
-        viewerContainer.style.height = '100%';
-        panoramaContainer.appendChild(viewerContainer);
-        
-        // Initialize panorama
-        setTimeout(() => {
-            try {
-                viewer = pannellum.viewer(viewerContainer.id, {
-                    type: 'equirectangular',
-                    panorama: panoramaImage,
-                    autoLoad: true,
-                    autoRotate: -2,
-                    compass: true,
-                    title: location,
-                    author: 'TripGenie',
-                    preview: document.getElementById('tourImage').src,
-                    showFullscreenCtrl: true,
-                    showControls: true,
-                    keyboardZoom: true,
-                    mouseZoom: true,
-                    hfov: 100,
-                    minHfov: 50,
-                    maxHfov: 120
+        ];
+
+        tourLocations.forEach((location, index) => {
+            const locationItem = document.createElement('div');
+            locationItem.classList.add('tour-location-item');
+            locationItem.style.cursor = "pointer";
+            locationItem.style.border = "1px solid #ccc";
+            locationItem.style.padding = "10px";
+            locationItem.style.borderRadius = "10px";
+            locationItem.style.transition = "background-color 0.3s";
+            if (index === 0) locationItem.style.backgroundColor = "#e0f7fa";
+
+            locationItem.innerHTML = `
+                <img src="${location.image}" alt="${location.name}" style="width: 100%; height: auto; border-radius: 5px;">
+                <h4 style="margin-top: 10px;">${location.name}</h4>
+            `;
+
+            locationItem.addEventListener('click', () => {
+                tourVideo.src = location.videoUrl;
+                tourName.textContent = location.name;
+                tourDescription.textContent = location.description;
+
+                // Reset background for all items
+                document.querySelectorAll('.tour-location-item').forEach(item => {
+                    item.style.backgroundColor = "white";
                 });
-                
-                // Add close button
-                const closeButton = document.createElement('button');
-                closeButton.className = 'close-panorama';
-                closeButton.innerHTML = '<i class="fas fa-times"></i>';
-                panoramaContainer.appendChild(closeButton);
-                
-                closeButton.addEventListener('click', function() {
-                    closePanorama();
-                });
-                
-                // Log success
-                console.log("360 tour initialized successfully");
-            } catch (error) {
-                console.error("Error initializing panorama:", error);
-                panoramaContainer.innerHTML = `
-                    <div style="color: white; text-align: center; padding: 20px;">
-                        <h3>Error loading 360° tour</h3>
-                        <p>Please try again later.</p>
-                        <button class="close-panorama">Close</button>
-                    </div>
-                `;
-                
-                // Add event listener to the newly created close button
-                const errorCloseBtn = panoramaContainer.querySelector('.close-panorama');
-                if (errorCloseBtn) {
-                    errorCloseBtn.addEventListener('click', closePanorama);
-                }
-            }
-        }, 500);
-    }
-    
-    // Function to close the panorama
-    function closePanorama() {
-        if (viewer) {
-            viewer.destroy();
-            viewer = null;
-        }
-        panoramaContainer.innerHTML = '';
-        panoramaContainer.style.display = 'none';
-        panoramaContainer.classList.remove('active');
-    }
-    
-    // Attach click event to play button
-    const playButton = virtualTourContainer.querySelector('.play-button');
-    if (playButton) {
-        playButton.addEventListener('click', function() {
-            const tourName = document.getElementById('tourName').textContent;
-            start360Tour(tourName);
+                // Highlight selected
+                locationItem.style.backgroundColor = "#e0f7fa";
+            });
+
+            tourLocationsList.appendChild(locationItem);
         });
-    }
-    
-    // Attach click event to tour location items
-    const tourLocationItems = document.querySelectorAll('.tour-location-item');
-    tourLocationItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const locationName = this.querySelector('h4').textContent;
-            const locationDescription = this.getAttribute('data-description');
-            
-            // Update preview image
-            document.getElementById('tourImage').src = this.querySelector('img').src;
-            document.getElementById('tourName').textContent = locationName;
-            document.getElementById('tourDescription').textContent = locationDescription;
-            
-            // Remove active class from all items
-            tourLocationItems.forEach(i => i.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-    
-    // Add keyboard event to close panorama with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && panoramaContainer.style.display === 'block') {
-            closePanorama();
-        }
     });
 }
+
 
 // Voice modal functionality with real voice recognition
 function initVoiceModal() {
