@@ -3,84 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripGenie – Your AI Travel Assistant</title>
-    <meta name="description" content="Create, customize, and share your travel itineraries with TripGenie's smart planning tools. Plan, Pack, and Explore – All in One Place.">
-    <!-- Font Awesome for icons -->
+    <title>TripGenie - Your AI Travel Assistant</title>
+    <meta name="description" content="Plan, book, and explore your perfect travel experience with AI assistance. Create customizable itineraries, find deals, and enjoy virtual tours.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="TripGenie - Your AI Travel Assistant">
+    <meta property="og:description" content="Plan your perfect trip with the help of AI. Create itineraries, find deals, and explore virtual tours.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1">
+    <meta property="og:url" content="https://tripgenie.app">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imgur.com/XrcJ8sG.png" type="image/png">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Pannellum for 360 Tours -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    
+    <!-- AOS Library for Scroll Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header / Navigation -->
+    <!-- Header -->
     <header id="main-header">
         <div class="container">
-            <div class="logo">
-                <i class="fas fa-globe-americas"></i>
-                <div>
-                    <h1>TripGenie</h1>
-                    <p>Plan, Pack, and Explore – All in One Place</p>
-                </div>
-            </div>
-            
             <nav>
-                <a href="#planner">Planner</a>
-                <a href="#destinations">Destinations</a>
-                <a href="#flights-hotels">Flights & Hotels</a>
-                <a href="#virtual-tour">Virtual Tours</a>
-            </nav>
-            
-            <div class="nav-buttons">
-                <button id="voiceButton">
-                    <i class="fas fa-microphone"></i>
-                    <span>Voice</span>
-                </button>
-                <button id="languageButton">
-                    <i class="fas fa-language"></i>
-                </button>
-                <button id="mobileMenuButton">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden">
-            <div class="container">
-                <a href="#planner">Planner</a>
-                <a href="#destinations">Destinations</a>
-                <a href="#flights-hotels">Flights & Hotels</a>
-                <a href="#virtual-tour">Virtual Tours</a>
-                <div class="mobile-buttons">
-                    <button id="mobileVoiceButton">
+                <div class="logo">
+                    <a href="#" id="logo-link">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>TripGenie</span>
+                    </a>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#itinerary-section">Planner</a>
+                    <a href="#destinations-section">Destinations</a>
+                    <a href="#flights-hotels-section">Flights & Hotels</a>
+                    <a href="#virtual-tours-section">Virtual Tours</a>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button id="languageButton" class="language-button">
+                        <i class="fas fa-language text-xl"></i>
+                    </button>
+                    <button id="voiceButton" class="voice-button">
                         <i class="fas fa-microphone"></i>
                         <span>Voice</span>
                     </button>
-                    <button id="mobileLanguageButton">
-                        <i class="fas fa-language"></i>
+                    <a href="#" class="action-button">Sign Up</a>
+                </div>
+                
+                <div class="mobile-buttons">
+                    <button id="mobileLanguageButton" class="language-button">
+                        <i class="fas fa-language text-xl"></i>
+                    </button>
+                    <button id="mobileVoiceButton" class="voice-button">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button id="mobileMenuButton">
+                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
+            </nav>
+            
+            <div id="mobileMenu" class="mobile-menu hidden">
+                <a href="#itinerary-section">Planner</a>
+                <a href="#destinations-section">Destinations</a>
+                <a href="#flights-hotels-section">Flights & Hotels</a>
+                <a href="#virtual-tours-section">Virtual Tours</a>
+                <a href="#" class="mobile-action">Sign Up</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="overlay"></div>
+        <div class="hero-overlay"></div>
         <div class="container">
-            <div class="hero-content">
+            <div data-aos="fade-up" data-aos-duration="1000">
                 <h2>Let AI Plan Your Perfect Trip</h2>
                 <p>Create, customize, and share your travel itineraries with TripGenie's smart planning tools.</p>
                 <div class="hero-buttons">
                     <button class="primary-button">Start Planning Now</button>
-                    <button class="secondary-button">
-                        <i class="fas fa-play-circle"></i> Watch How It Works
-                    </button>
+                    <button class="secondary-button"><i class="fas fa-play-circle mr-2"></i> Watch How It Works</button>
                 </div>
             </div>
             
-            <div class="scroll-down">
+            <div class="mouse-icon">
                 <p>Discover More</p>
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -88,23 +108,23 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features">
+    <section id="features-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header text-center" data-aos="fade-up">
                 <h2>Plan Your Trip Like Never Before</h2>
                 <p>Our AI-powered tools help you create the perfect itinerary, find the best deals, and explore destinations before you even arrive.</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card" data-delay="0">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="feature-icon primary">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-route"></i>
                     </div>
                     <h3>Interactive Itinerary</h3>
                     <p>Drag and drop to create, customize, and reorder your daily plans with our intuitive interface.</p>
                 </div>
                 
-                <div class="feature-card" data-delay="200">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-icon secondary">
                         <i class="fas fa-plane-departure"></i>
                     </div>
@@ -112,8 +132,8 @@
                     <p>Find and book the best travel options all in one place, with smart recommendations.</p>
                 </div>
                 
-                <div class="feature-card" data-delay="400">
-                    <div class="feature-icon accent">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon success">
                         <i class="fas fa-vr-cardboard"></i>
                     </div>
                     <h3>Virtual Tours</h3>
@@ -122,9 +142,9 @@
             </div>
             
             <div class="features-row">
-                <div class="feature-row-card" data-delay="600">
-                    <div class="feature-icon primary">
-                        <i class="fas fa-microphone-alt"></i>
+                <div class="feature-row-card" data-aos="fade-right">
+                    <div class="feature-row-icon accent">
+                        <i class="fas fa-microphone"></i>
                     </div>
                     <div>
                         <h3>Voice Control</h3>
@@ -132,8 +152,8 @@
                     </div>
                 </div>
                 
-                <div class="feature-row-card" data-delay="800">
-                    <div class="feature-icon secondary">
+                <div class="feature-row-card" data-aos="fade-left">
+                    <div class="feature-row-icon error">
                         <i class="fas fa-language"></i>
                     </div>
                     <div>
@@ -146,99 +166,103 @@
     </section>
 
     <!-- Itinerary Planner Section -->
-    <section id="planner">
+    <section id="itinerary-section">
         <div class="container">
-            <div class="section-header">
-                <span class="badge primary">INTERACTIVE PLANNER</span>
+            <div class="section-badge" data-aos="fade-up">INTERACTIVE PLANNER</div>
+            <div class="section-header" data-aos="fade-up">
                 <h2>Create Your Perfect Itinerary</h2>
                 <p>Drag and drop activities to build your ideal trip schedule.</p>
             </div>
             
-            <div class="planner-card">
-                <div class="planner-sidebar">
-                    <h3>Trip Details</h3>
-                    
-                    <div class="form-group">
-                        <label>Destination</label>
-                        <select id="destination">
-                            <option selected>Ooty, India</option>
-                            <option>Bali, Indonesia</option>
-                            <option>Paris, France</option>
-                            <option>Tokyo, Japan</option>
-                            <option>New York, USA</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-row">
+            <div class="itinerary-layout">
+                <div class="itinerary-sidebar" data-aos="fade-right">
+                    <div class="itinerary-form">
+                        <h3>Trip Details</h3>
+                        
                         <div class="form-group">
-                            <label>Start Date</label>
-                            <input type="date" id="startDate">
+                            <label for="destination">Destination</label>
+                            <select id="destination" class="form-control">
+                                <option value="Ooty">Ooty, India</option>
+                                <option value="Bali">Bali, Indonesia</option>
+                                <option value="Paris">Paris, France</option>
+                            </select>
                         </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="startDate">Start Date</label>
+                                <input type="date" id="startDate" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="endDate">End Date</label>
+                                <input type="date" id="endDate" class="form-control">
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
-                            <label>End Date</label>
-                            <input type="date" id="endDate">
+                            <label>Travelers</label>
+                            <div class="number-input">
+                                <button id="decreaseTravelers" class="number-button">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="text" id="travelers" class="number-control" value="2" readonly>
+                                <button id="increaseTravelers" class="number-button">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Travelers</label>
-                        <div class="number-input">
-                            <button id="decreaseTravelers">
-                                <i class="fas fa-minus"></i>
+                        
+                        <div class="form-group">
+                            <label>Travel Style</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-text">Adventure</span>
+                                </label>
+                                
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkbox-text">Culture</span>
+                                </label>
+                                
+                                <label class="checkbox">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-text">Relaxation</span>
+                                </label>
+                                
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkbox-text">Food & Drink</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="primary-button w-full">
+                            <i class="fas fa-magic mr-2"></i> Generate Itinerary
+                        </button>
+                        
+                        <div class="action-buttons">
+                            <button class="icon-button">
+                                <i class="fas fa-share-alt"></i>
+                                <span>Share</span>
                             </button>
-                            <input type="number" id="travelers" value="2" min="1" readonly>
-                            <button id="increaseTravelers">
-                                <i class="fas fa-plus"></i>
+                            <button class="icon-button">
+                                <i class="fas fa-file-export"></i>
+                                <span>Export</span>
                             </button>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label>Travel Style</label>
-                        <div class="checkbox-grid">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="adventure">
-                                <label for="adventure">Adventure</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="culture">
-                                <label for="culture">Culture</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="relaxation">
-                                <label for="relaxation">Relaxation</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="food">
-                                <label for="food">Food & Drink</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="primary-button full-width">
-                        <i class="fas fa-magic"></i> Generate Itinerary
-                    </button>
                 </div>
                 
-                <div class="planner-content">
-                    <div class="itinerary-header">
-                        <h3 id="itineraryDestination">Your Ooty, India Itinerary</h3>
-                        <div class="itinerary-actions">
-                            <button class="outline-button">
-                                <i class="fas fa-share-alt"></i> Share
-                            </button>
-                            <button class="outline-button">
-                                <i class="fas fa-download"></i> Export
-                            </button>
-                        </div>
+                <div class="itinerary-content" data-aos="fade-left">
+                    <h3 id="itineraryDestination">Your Ooty Itinerary</h3>
+                    
+                    <div id="itinerary-container" class="itinerary-container">
+                        <!-- Itinerary cards will be added dynamically via JavaScript -->
                     </div>
                     
-                    <div id="itinerary-container">
-                        <!-- Days will be added by JavaScript -->
-                    </div>
-                    
-                    <button id="addDayButton" class="dashed-button">
-                        <i class="fas fa-plus-circle"></i> Add Another Day
+                    <button id="addDayButton" class="secondary-button mt-6">
+                        <i class="fas fa-plus mr-2"></i> Add Another Day
                     </button>
                 </div>
             </div>
@@ -246,149 +270,240 @@
     </section>
 
     <!-- Destinations Section -->
-    <section id="destinations">
+    <section id="destinations-section" class="bg-light">
         <div class="container">
-            <div class="section-header">
-                <span class="badge secondary">EXPLORE</span>
+            <div class="section-header text-center" data-aos="fade-up">
                 <h2>Popular Destinations</h2>
-                <p>Discover amazing places and add them to your travel wishlist.</p>
+                <p>Explore handpicked destinations with curated experiences and recommendations.</p>
             </div>
             
             <div class="destinations-grid">
-                <!-- Destinations will be added by JavaScript -->
+                <!-- Destination cards will be added dynamically via JavaScript -->
             </div>
             
-            <div class="text-center">
-                <button class="outline-button primary">
-                    View All Destinations
+            <div class="view-more-container text-center" data-aos="fade-up">
+                <button class="outline-button">
+                    View All Destinations <i class="fas fa-arrow-right ml-2"></i>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Flights & Hotels Section -->
-    <section id="flights-hotels">
+    <section id="flights-hotels-section">
         <div class="container">
-            <div class="section-header">
-                <span class="badge accent">BOOKINGS</span>
-                <h2>Flights & Hotels</h2>
-                <p>Find and book the perfect accommodations and transportation for your trip.</p>
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>Search Flights & Hotels</h2>
+                <p>Find the best travel deals for your next journey with personalized recommendations.</p>
             </div>
             
-            <div class="booking-card">
-                <div class="tabs">
-                    <button class="tab active" data-tab="flights">
-                        <i class="fas fa-plane-departure"></i> Flights
-                    </button>
-                    <button class="tab" data-tab="hotels">
-                        <i class="fas fa-hotel"></i> Hotels
-                    </button>
-                    <button class="tab" data-tab="cars">
-                        <i class="fas fa-car"></i> Car Rentals
-                    </button>
-                </div>
-                
-                <div class="tab-content">
-                    <div id="flights-tab" class="tab-pane active">
-                        <div class="flight-search">
-                            <div class="trip-types">
-                                <label>
+            <div class="tabs" data-aos="fade-up">
+                <button class="tab active" data-tab="flights">
+                    <i class="fas fa-plane"></i> Flights
+                </button>
+                <button class="tab" data-tab="hotels">
+                    <i class="fas fa-hotel"></i> Hotels
+                </button>
+            </div>
+            
+            <div class="tab-content" data-aos="fade-up">
+                <div id="flights-tab" class="tab-pane active">
+                    <div class="search-form">
+                        <div class="form-row">
+                            <div class="form-group radio-group">
+                                <label class="radio">
                                     <input type="radio" name="tripType" value="roundTrip" checked>
-                                    <span>Round Trip</span>
+                                    <span class="radio-text">Round Trip</span>
                                 </label>
-                                <label>
+                                
+                                <label class="radio">
                                     <input type="radio" name="tripType" value="oneWay">
-                                    <span>One Way</span>
+                                    <span class="radio-text">One Way</span>
                                 </label>
-                                <label>
-                                    <input type="radio" name="tripType" value="multiCity">
-                                    <span>Multi-City</span>
-                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="departureCity">From</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-plane-departure"></i>
+                                    <input type="text" id="departureCity" class="form-control" placeholder="Delhi" value="Delhi">
+                                </div>
                             </div>
                             
-                            <div class="search-form">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>From</label>
-                                        <div class="input-icon">
-                                            <i class="fas fa-plane-departure"></i>
-                                            <input type="text" placeholder="City or Airport">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>To</label>
-                                        <div class="input-icon">
-                                            <i class="fas fa-plane-arrival"></i>
-                                            <input type="text" placeholder="City or Airport">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>Departure</label>
-                                        <input type="date">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>Return</label>
-                                        <input type="date" id="returnDate">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>Passengers</label>
-                                        <select>
-                                            <option>1 Adult</option>
-                                            <option>2 Adults</option>
-                                            <option>2 Adults, 1 Child</option>
-                                            <option>2 Adults, 2 Children</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>Class</label>
-                                        <select>
-                                            <option>Economy</option>
-                                            <option>Premium Economy</option>
-                                            <option>Business</option>
-                                            <option>First Class</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>&nbsp;</label>
-                                        <button class="primary-button full-width">
-                                            <i class="fas fa-search"></i> Search Flights
-                                        </button>
-                                    </div>
+                            <div class="form-group">
+                                <label for="arrivalCity">To</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-plane-arrival"></i>
+                                    <input type="text" id="arrivalCity" class="form-control" placeholder="Coimbatore" value="Coimbatore">
                                 </div>
                             </div>
                         </div>
                         
-                        <hr>
-                        
-                        <h3>Popular Flights to Ooty (Coimbatore Airport)</h3>
-                        
-                        <div id="flights-results">
-                            <!-- Flights will be added by JavaScript -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="departureDate">Departure Date</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar"></i>
+                                    <input type="date" id="departureDate" class="form-control">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="returnDate">Return Date</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar"></i>
+                                    <input type="date" id="returnDate" class="form-control">
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="text-center">
-                            <button class="text-button">
-                                View All Flights <i class="fas fa-chevron-right"></i>
+                        <div class="form-row">
+                            <button class="primary-button">
+                                <i class="fas fa-search mr-2"></i> Search Flights
                             </button>
                         </div>
                     </div>
                     
-                    <div id="hotels-tab" class="tab-pane">
-                        <h3>Search Hotels</h3>
-                        <p class="text-center">Hotel search functionality coming soon!</p>
+                    <div id="flights-results" class="flights-results">
+                        <!-- Flight cards will be added dynamically via JavaScript -->
+                    </div>
+                </div>
+                
+                <div id="hotels-tab" class="tab-pane">
+                    <div class="search-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hotelDestination">Destination</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <input type="text" id="hotelDestination" class="form-control" placeholder="Ooty" value="Ooty">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkInDate">Check-in Date</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar"></i>
+                                    <input type="date" id="checkInDate" class="form-control">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkOutDate">Check-out Date</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar"></i>
+                                    <input type="date" id="checkOutDate" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rooms">Rooms</label>
+                                <div class="number-input">
+                                    <button class="number-button">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="text" id="rooms" class="number-control" value="1" readonly>
+                                    <button class="number-button">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guests">Guests</label>
+                                <div class="number-input">
+                                    <button class="number-button">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="text" id="guests" class="number-control" value="2" readonly>
+                                    <button class="number-button">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button class="primary-button">
+                                <i class="fas fa-search mr-2"></i> Search Hotels
+                            </button>
+                        </div>
                     </div>
                     
-                    <div id="cars-tab" class="tab-pane">
-                        <h3>Rent a Car</h3>
-                        <p class="text-center">Car rental search functionality coming soon!</p>
+                    <div class="hotels-grid">
+                        <div class="hotel-card" data-aos="fade-up">
+                            <div class="hotel-image">
+                                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500" alt="Savoy Hotel, Ooty">
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i> 4.8
+                                </div>
+                            </div>
+                            <div class="hotel-details">
+                                <h3>Savoy Hotel</h3>
+                                <p class="hotel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Ooty, Tamil Nadu
+                                </p>
+                                <ul class="hotel-amenities">
+                                    <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                                    <li><i class="fas fa-utensils"></i> Restaurant</li>
+                                    <li><i class="fas fa-parking"></i> Parking</li>
+                                </ul>
+                                <div class="hotel-footer">
+                                    <div class="hotel-price">₹6,500 <span>per night</span></div>
+                                    <button class="primary-button">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hotel-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="hotel-image">
+                                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500" alt="Taj Ooty Resort & Spa">
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i> 4.7
+                                </div>
+                            </div>
+                            <div class="hotel-details">
+                                <h3>Taj Ooty Resort & Spa</h3>
+                                <p class="hotel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Elkhill, Ooty
+                                </p>
+                                <ul class="hotel-amenities">
+                                    <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                                    <li><i class="fas fa-spa"></i> Spa</li>
+                                    <li><i class="fas fa-swimming-pool"></i> Pool</li>
+                                </ul>
+                                <div class="hotel-footer">
+                                    <div class="hotel-price">₹12,800 <span>per night</span></div>
+                                    <button class="primary-button">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hotel-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="hotel-image">
+                                <img src="https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500" alt="Pine Forest Cottages">
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="hotel-details">
+                                <h3>Pine Forest Cottages</h3>
+                                <p class="hotel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Fern Hill, Ooty
+                                </p>
+                                <ul class="hotel-amenities">
+                                    <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                                    <li><i class="fas fa-snowflake"></i> Fireplace</li>
+                                    <li><i class="fas fa-mountain"></i> Mountain View</li>
+                                </ul>
+                                <div class="hotel-footer">
+                                    <div class="hotel-price">₹8,200 <span>per night</span></div>
+                                    <button class="primary-button">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -396,242 +511,215 @@
     </section>
 
     <!-- Virtual Tours Section -->
-    <section id="virtual-tour">
+    <section id="virtual-tours-section" class="bg-light">
         <div class="container">
-            <div class="section-header">
-                <span class="badge primary">EXPLORE VIRTUALLY</span>
-                <h2>Virtual Tours</h2>
-                <p>Experience destinations before you travel with our immersive 360° tours.</p>
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>Explore Virtual Tours</h2>
+                <p>Experience destinations in immersive 360° before your trip with our virtual tour technology.</p>
             </div>
             
-            <div class="virtual-tour-card">
-                <div class="tour-preview">
-                    <img id="tourImage" src="https://pixabay.com/get/g80a39ef22a8960cb226de4d8d9c951bf838822e9a25b0255f854bf1f07f03a013e82d928a5f3923b75b293a5b778d7f37794c19e4913922b733e95c7f62f2b6b_1280.jpg" alt="Ooty Botanical Gardens">
-                    <div class="preview-overlay">
+            <div class="virtual-tours-layout">
+                <div class="tour-locations-sidebar" data-aos="fade-right">
+                    <h3>Tour Locations</h3>
+                    <div id="tour-locations-list" class="tour-locations-list">
+                        <!-- Tour location items will be added dynamically via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tour-preview" data-aos="fade-left">
+                    <div class="tour-image-container">
+                        <img id="tourImage" src="https://pixabay.com/get/g80a39ef22a8960cb226de4d8d9c951bf838822e9a25b0255f854bf1f07f03a013e82d928a5f3923b75b293a5b778d7f37794c19e4913922b733e95c7f62f2b6b_1280.jpg" alt="Ooty Botanical Gardens">
                         <button class="play-button">
                             <i class="fas fa-play"></i>
                         </button>
+                        <div id="panorama-container" class="panorama-container"></div>
                     </div>
                     <div class="tour-details">
                         <h3 id="tourName">Ooty Botanical Gardens</h3>
                         <p id="tourDescription">Experience the 55-acre garden with over 650 species of plants and flowers.</p>
                     </div>
                 </div>
-                
-                <div class="tour-locations">
-                    <h3>Popular Virtual Tours</h3>
-                    <div id="tour-locations-list">
-                        <!-- Tour locations will be added by JavaScript -->
-                    </div>
-                    
-                    <button class="primary-button full-width">
-                        Explore More Destinations
-                    </button>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Voice Assistant Section -->
-    <section id="voice-assistant">
+    <section id="voice-assistant-section">
         <div class="container">
-            <div class="voice-grid">
-                <div class="voice-content">
-                    <span class="badge secondary">VOICE POWERED</span>
-                    <h2>Plan Your Trip Using Voice Commands</h2>
-                    <p>Use natural language to search, plan, and book your perfect vacation with our AI-powered voice assistant.</p>
+            <div class="voice-assistant-layout">
+                <div class="voice-assistant-content" data-aos="fade-right">
+                    <div class="section-badge">AI ASSISTANT</div>
+                    <h2>Plan Hands-Free with Voice Commands</h2>
+                    <p>Use your voice to search for destinations, get travel recommendations, check weather, and more with our AI-powered voice assistant.</p>
                     
-                    <div class="voice-features">
-                        <div class="voice-feature">
-                            <div class="feature-icon primary">
-                                <i class="fas fa-search"></i>
+                    <div class="voice-examples">
+                        <div class="voice-example-item">
+                            <div class="voice-example-icon">
+                                <i class="fas fa-info-circle"></i>
                             </div>
-                            <div>
-                                <h3>Search with Voice</h3>
-                                <p>"Find me hotels in Ooty with mountain views"</p>
-                            </div>
-                        </div>
-                        
-                        <div class="voice-feature">
-                            <div class="feature-icon primary">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div>
-                                <h3>Plan Your Days</h3>
-                                <p>"Add boating at Pykara Lake on day 2 of my trip"</p>
+                            <div class="voice-example-text">
+                                <h4>Ask for information</h4>
+                                <p>"Tell me about Ooty's weather in December"</p>
                             </div>
                         </div>
                         
-                        <div class="voice-feature">
-                            <div class="feature-icon primary">
+                        <div class="voice-example-item">
+                            <div class="voice-example-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <div class="voice-example-text">
+                                <h4>Get itinerary suggestions</h4>
+                                <p>"Plan a 3-day trip to Ooty"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="voice-example-item">
+                            <div class="voice-example-icon">
                                 <i class="fas fa-language"></i>
                             </div>
-                            <div>
-                                <h3>Instant Translation</h3>
-                                <p>"Translate 'Where is the nearest restaurant?' to Tamil"</p>
+                            <div class="voice-example-text">
+                                <h4>Translate phrases</h4>
+                                <p>"Translate 'Where is the botanical garden?' to Tamil"</p>
                             </div>
                         </div>
                     </div>
                     
                     <button id="tryVoiceAssistant" class="primary-button">
-                        <i class="fas fa-microphone"></i> Try Voice Assistant
+                        <i class="fas fa-microphone mr-2"></i> Try Voice Assistant
                     </button>
                 </div>
                 
-                <div class="voice-image">
-                    <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Person using voice commands">
-                    
-                    <div class="voice-assistant-ui">
-                        <div class="voice-ui-header">
-                            <h4>Voice Assistant</h4>
-                            <div class="voice-icon-pulse">
-                                <i class="fas fa-microphone"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="voice-messages">
-                            <div class="voice-message user">
-                                "Show me the best time to visit Ooty"
-                            </div>
-                            <div class="voice-message assistant">
-                                "The best time to visit Ooty is between October and June, with peak season during April-May when the flowers are in full bloom."
-                            </div>
-                        </div>
-                        
-                        <div class="voice-ui-footer">
-                            Tap microphone to speak
-                        </div>
-                    </div>
+                <div class="voice-assistant-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Voice Assistant">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials">
+    <section id="testimonials-section" class="bg-light">
         <div class="container">
-            <div class="section-header">
-                <span class="badge accent">HAPPY TRAVELERS</span>
-                <h2>What Our Users Say</h2>
-                <p>Real experiences from travelers who planned their trips with TripGenie.</p>
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>What Our Travelers Say</h2>
+                <p>Read experiences from travelers who have used TripGenie to plan their journeys.</p>
             </div>
             
             <div class="testimonials-grid">
-                <!-- Testimonials will be added by JavaScript -->
+                <!-- Testimonial cards will be added dynamically via JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Call to Action Section -->
-    <section id="cta">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Plan Your Dream Trip?</h2>
-                <p>Join thousands of happy travelers who plan, pack, and explore with TripGenie's AI-powered tools.</p>
-                <div class="cta-buttons">
-                    <button class="white-button">
-                        Start Planning Now
-                    </button>
-                    <button class="outline-white-button">
-                        Learn More
+    <section id="cta-section">
+        <div class="cta-background">
+            <div class="cta-overlay"></div>
+            <div class="container">
+                <div class="cta-content" data-aos="fade-up">
+                    <h2>Ready to Plan Your Dream Trip?</h2>
+                    <p>Get started today and let TripGenie help you create memorable travel experiences.</p>
+                    <button class="cta-button">
+                        <i class="fas fa-magic mr-2"></i> Start Planning Now
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <div class="footer-logo">
-                        <i class="fas fa-globe-americas"></i>
-                        <div>
-                            <h3>TripGenie</h3>
-                            <p>Plan, Pack, and Explore</p>
-                        </div>
-                    </div>
-                    <p>Your AI-powered travel assistant for creating perfect itineraries with smart planning tools.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Features</h4>
-                    <ul>
-                        <li><a href="#planner">Itinerary Planner</a></li>
-                        <li><a href="#flights-hotels">Flight & Hotel Booking</a></li>
-                        <li><a href="#virtual-tour">Virtual Tours</a></li>
-                        <li><a href="#voice-assistant">Voice Assistant</a></li>
-                        <li><a href="#">Language Translation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Popular Destinations</h4>
-                    <ul>
-                        <li><a href="#">Ooty, India</a></li>
-                        <li><a href="#">Bali, Indonesia</a></li>
-                        <li><a href="#">Paris, France</a></li>
-                        <li><a href="#">Tokyo, Japan</a></li>
-                        <li><a href="#">New York, USA</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> TripGenie. All rights reserved.</p>
-            </div>
+    <!-- Footer -->
+<footer id="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <i class="fas fa-map-marked-alt"></i>
+          <span>TripGenie</span>
         </div>
-    </footer>
+        <p>Your AI-powered travel assistant for planning, booking, and exploring destinations with ease.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Features</h3>
+        <ul>
+          <li><a href="#">Itinerary Planner</a></li>
+          <li><a href="#">Virtual Tours</a></li>
+          <li><a href="#">Voice Assistant</a></li>
+          <li><a href="#">Travel Guides</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="currentYear">2023</span> TripGenie. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
     <!-- Voice Command Modal -->
-    <div id="voiceModal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
+    <div id="voiceModal" class="voice-modal">
+        <div class="voice-modal-content">
+            <div class="voice-ui">
                 <h3>Voice Assistant</h3>
                 <p>Speak your command...</p>
-            </div>
-            
-            <div id="voiceButton" class="voice-button">
-                <div class="voice-inner-button">
-                    <i class="fas fa-microphone"></i>
+                
+                <div class="voice-ui-main">
+                    <div class="voice-ui-visualization">
+                        <div class="voice-inner-button">
+                            <div class="voice-inner-circle"></div>
+                            <div class="voice-wave"></div>
+                            <div class="voice-wave"></div>
+                            <div class="voice-wave"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="voice-ui-result">
+                        <div id="voiceTranscript" class="voice-transcript">Listening...</div>
+                        <div id="voiceResponse" class="voice-response hidden"></div>
+                    </div>
                 </div>
-            </div>
-            
-            <div id="voiceTranscript" class="voice-transcript">
-                Listening...
-            </div>
-            
-            <div id="voiceResponse" class="voice-response hidden">
-                <!-- Response will be added by JavaScript -->
-            </div>
-            
-            <div class="modal-buttons">
-                <button id="cancelVoice" class="secondary-button">Cancel</button>
-                <button id="sendVoice" class="primary-button">Send</button>
+                
+                <div class="voice-ui-footer">
+                    Tap microphone to speak
+                </div>
+                
+                <div class="voice-ui-buttons">
+                    <button id="cancelVoice" class="secondary-button">Cancel</button>
+                    <button id="sendVoice" class="primary-button">Send</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Custom JavaScript -->
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>
