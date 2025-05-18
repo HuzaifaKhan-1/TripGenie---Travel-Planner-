@@ -373,7 +373,7 @@ function initDestinations() {
             rating: 4.8,
             badge: "Featured",
             badgeColor: "accent",
-            image: "https://pixabay.com/get/g9a76e870294abd833ad63249ccd4c6fbdf4ed9cbc54bd1eba85f0daedffedf08eb896e460b8440b699bc3c4a6379cd2c8a3274ce6932f6b3cb9d83c4be669ef2_1280.jpg"
+            image: "https://experiencekerala.in/image-uploads/1468473509.Ooty_Lake.jpg"
         },
         {
             id: 2,
@@ -565,7 +565,7 @@ function initTourLocations() {
             description: "Experience the 55-acre garden with over 650 species of plants and flowers.",
             type: "Virtual walking tour",
             hasVR: true,
-            image: "https://pixabay.com/get/g80a39ef22a8960cb226de4d8d9c951bf838822e9a25b0255f854bf1f07f03a013e82d928a5f3923b75b293a5b778d7f37794c19e4913922b733e95c7f62f2b6b_1280.jpg",
+            image: "https://experiencekerala.in/image-uploads/1468473509.Ooty_Lake.jpg",
             isActive: true
         },
         {
@@ -574,7 +574,7 @@ function initTourLocations() {
             description: "Panoramic views from the highest peak in the Nilgiris mountain range.",
             type: "Panoramic viewpoint tour",
             hasVR: true,
-            image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+            image: "https://images.trvl-media.com/media/content/shared/images/travelguides/destination/6049947/Tamil-Nadu-97368.jpg",
             isActive: false
         },
         {
@@ -583,7 +583,7 @@ function initTourLocations() {
             description: "UNESCO heritage train journey through scenic mountain landscapes.",
             type: "UNESCO heritage train ride",
             hasVR: true,
-            image: "https://images.unsplash.com/photo-1516383607781-913a19294fd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
+            image: "https://th.bing.com/th/id/OIP.ThC0fGUX9wvIiH-6nZlO9AHaE8?cb=iwc2&rs=1&pid=ImgDetMain",
             isActive: false
         },
         {
@@ -592,7 +592,7 @@ function initTourLocations() {
             description: "Serene lake surrounded by shola forests with boating opportunities.",
             type: "Lake and waterfall tour",
             hasVR: true,
-            image: "https://pixabay.com/get/g15a312a5fbfe3ae3d9fd50cb4b869ccc63e54afcd236018166df7a653d2673df3979c32788628e1eba01a45c9650abe2e2acf10db4f30144f14b0bf263e1118e_1280.jpg",
+            image: "https://ootytours.in/images/tours/one-day-ooty-pykara-tour/one-day-ooty-pykara-tour-pykara-lake-boatclub-local-sightseeing-tour-package-pykara-lake-boat-club-ooty.jpg",
             isActive: false
         }
     ];
