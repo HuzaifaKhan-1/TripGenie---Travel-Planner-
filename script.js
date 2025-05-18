@@ -1327,3 +1327,39 @@ setInterval(() => {
   currentGlow = (currentGlow + 1) % glowClasses.length;
   textElement.classList.add(glowClasses[currentGlow]);
 }, 5000); // every 5 seconds, matches slideshow timing
+
+
+// Signup Form
+const signupOverlay = document.getElementById('signupOverlay');
+const showLoginBtn = document.getElementById('showLoginBtn');
+const showSignupBtn = document.getElementById('showSignupBtn');
+const signupSection = document.getElementById('signupSection');
+const loginSection = document.getElementById('loginSection');
+
+// Show overlay on Sign Up button click
+document.querySelector('.action-button').addEventListener('click', function (e) {
+  e.preventDefault();
+  signupOverlay.classList.remove('hidden');
+  document.body.classList.add('blurred');
+  signupSection.classList.remove('hidden');
+  loginSection.classList.add('hidden');
+});
+
+// Close modal
+document.getElementById('closeSignup').addEventListener('click', function () {
+  signupOverlay.classList.add('hidden');
+  document.body.classList.remove('blurred');
+});
+
+// Toggle Login
+showLoginBtn.addEventListener('click', function () {
+  signupSection.classList.add('hidden');
+  loginSection.classList.remove('hidden');
+});
+
+// Toggle Signup
+showSignupBtn.addEventListener('click', function () {
+  loginSection.classList.add('hidden');
+  signupSection.classList.remove('hidden');
+});
+
