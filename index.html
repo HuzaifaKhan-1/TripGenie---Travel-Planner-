@@ -549,14 +549,14 @@
         </div>
     </section>
 
-    <!-- Virtual Tours Section -->
+        <!-- Virtual Tours Section -->
     <section id="virtual-tours-section" class="bg-light">
         <div class="container">
             <div class="section-header text-center" data-aos="fade-up">
                 <h2>Explore Virtual Tours</h2>
-                <p>Experience destinations in immersive 360° before your trip with our virtual tour technology.</p>
+                <p>Experience destinations through videos before your trip with our virtual tour technology.</p>
             </div>
-            
+
             <div class="virtual-tours-layout">
                 <div class="tour-locations-sidebar" data-aos="fade-right">
                     <h3>Tour Locations</h3>
@@ -564,14 +564,19 @@
                         <!-- Tour location items will be added dynamically via JavaScript -->
                     </div>
                 </div>
-                
+
                 <div class="tour-preview" data-aos="fade-left">
-                    <div class="tour-image-container panorama-viewer" id="panorama-container">
-                        <img id="tourImage" src="https://pixabay.com/get/g80a39ef22a8960cb226de4d8d9c951bf838822e9a25b0255f854bf1f07f03a013e82d928a5f3923b75b293a5b778d7f37794c19e4913922b733e95c7f62f2b6b_1280.jpg" alt="Ooty Botanical Gardens">
-                        <button class="play-button">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div id="panorama-container" class="panorama-container"></div>
+                    <div class="tour-video-container" id="video-container">
+                        <iframe
+                            id="tourVideo"
+                            width="100%"
+                            height="400"
+                            src="https://www.youtube.com/embed/VNZxKU4zDwM?si=-fPMwDqjaag-bXeA"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="tour-details">
                         <h3 id="tourName">Ooty Botanical Gardens</h3>
@@ -582,58 +587,60 @@
         </div>
     </section>
 
-    <!-- Voice Assistant Section -->
-    <section id="voice-assistant-section">
-        <div class="container">
-            <div class="voice-assistant-layout">
-                <div class="voice-assistant-content" data-aos="fade-right">
-                    <div class="section-badge">AI ASSISTANT</div>
-                    <h2>Plan Hands-Free with Voice Commands</h2>
-                    <p>Use your voice to search for destinations, get travel recommendations, check weather, and more with our AI-powered voice assistant.</p>
-                    
-                    <div class="voice-examples">
-                        <div class="voice-example-item">
-                            <div class="voice-example-icon">
-                                <i class="fas fa-info-circle"></i>
+
+
+        <!-- Voice Assistant Section -->
+        <section id="voice-assistant-section">
+            <div class="container">
+                <div class="voice-assistant-layout">
+                    <div class="voice-assistant-content" data-aos="fade-right">
+                        <div class="section-badge">AI ASSISTANT</div>
+                        <h2>Plan Hands-Free with Voice Commands</h2>
+                        <p>Use your voice to search for destinations, get travel recommendations, check weather, and more with our AI-powered voice assistant.</p>
+                        
+                        <div class="voice-examples">
+                            <div class="voice-example-item">
+                                <div class="voice-example-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="voice-example-text">
+                                    <h4>Ask for information</h4>
+                                    <p>"Tell me about Ooty's weather in December"</p>
+                                </div>
                             </div>
-                            <div class="voice-example-text">
-                                <h4>Ask for information</h4>
-                                <p>"Tell me about Ooty's weather in December"</p>
+                            
+                            <div class="voice-example-item">
+                                <div class="voice-example-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div class="voice-example-text">
+                                    <h4>Get itinerary suggestions</h4>
+                                    <p>"Plan a 3-day trip to Ooty"</p>
+                                </div>
+                            </div>
+                            
+                            <div class="voice-example-item">
+                                <div class="voice-example-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <div class="voice-example-text">
+                                    <h4>Translate phrases</h4>
+                                    <p>"Translate 'Where is the botanical garden?' to Tamil"</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="voice-example-item">
-                            <div class="voice-example-icon">
-                                <i class="fas fa-route"></i>
-                            </div>
-                            <div class="voice-example-text">
-                                <h4>Get itinerary suggestions</h4>
-                                <p>"Plan a 3-day trip to Ooty"</p>
-                            </div>
-                        </div>
-                        
-                        <div class="voice-example-item">
-                            <div class="voice-example-icon">
-                                <i class="fas fa-language"></i>
-                            </div>
-                            <div class="voice-example-text">
-                                <h4>Translate phrases</h4>
-                                <p>"Translate 'Where is the botanical garden?' to Tamil"</p>
-                            </div>
-                        </div>
+                        <button id="tryVoiceAssistant" class="primary-button">
+                            <i class="fas fa-microphone mr-2"></i> Try Voice Assistant
+                        </button>
                     </div>
                     
-                    <button id="tryVoiceAssistant" class="primary-button">
-                        <i class="fas fa-microphone mr-2"></i> Try Voice Assistant
-                    </button>
-                </div>
-                
-                <div class="voice-assistant-image" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Voice Assistant">
+                    <div class="voice-assistant-image" data-aos="fade-left">
+                        <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Voice Assistant">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials-section" class="bg-light">
