@@ -113,250 +113,139 @@ function initItineraryPlanner() {
     const decreaseTravelersBtn = document.getElementById('decreaseTravelers');
     const increaseTravelersBtn = document.getElementById('increaseTravelers');
     const travelersInput = document.getElementById('travelers');
-    
-    // Sample itinerary days
-    const sampleDays = [
-        {
-            id: 1,
-            title: "Day 1 - Arrival & Botanical Gardens",
-            activities: [
-                {
-                    time: "09:00 AM",
-                    icon: "fa-suitcase-rolling",
-                    iconColor: "primary",
-                    title: "Arrive at Coimbatore Airport",
-                    description: "Private transfer to Ooty (2 hours)"
-                },
-                {
-                    time: "12:00 PM",
-                    icon: "fa-hotel",
-                    iconColor: "secondary",
-                    title: "Check-in at Savoy Hotel",
-                    description: "Historic colonial hotel with garden views"
-                },
-                {
-                    time: "02:00 PM",
-                    icon: "fa-tree",
-                    iconColor: "success",
-                    title: "Ooty Botanical Gardens",
-                    description: "Explore 55-acre gardens with rare trees and flowers"
-                },
-                {
-                    time: "07:00 PM",
-                    icon: "fa-utensils",
-                    iconColor: "accent",
-                    title: "Dinner at Earl's Secret",
-                    description: "Local Nilgiri cuisine with mountain views"
-                }
-            ]
-        },
-        {
-            id: 2,
-            title: "Day 2 - Tea Plantations & Doddabetta Peak",
-            activities: [
-                {
-                    time: "08:30 AM",
-                    icon: "fa-coffee",
-                    iconColor: "secondary",
-                    title: "Tea Factory & Plantation Tour",
-                    description: "Learn about tea production and sample fresh teas"
-                },
-                {
-                    time: "12:00 PM",
-                    icon: "fa-utensils",
-                    iconColor: "accent",
-                    title: "Lunch at Tea Nest",
-                    description: "Scenic lunch spot with tea-infused dishes"
-                },
-                {
-                    time: "02:30 PM",
-                    icon: "fa-mountain",
-                    iconColor: "success",
-                    title: "Doddabetta Peak Excursion",
-                    description: "Visit the highest peak in the Nilgiris for panoramic views"
-                }
-            ]
-        },
-        {
-            id: 3,
-            title: "Day 3 - Toy Train & Pykara Lake",
-            activities: [
-                {
-                    time: "09:00 AM",
-                    icon: "fa-train",
-                    iconColor: "primary",
-                    title: "Nilgiri Mountain Railway",
-                    description: "Scenic toy train ride through the mountains (UNESCO heritage)"
-                },
-                {
-                    time: "01:30 PM",
-                    icon: "fa-water",
-                    iconColor: "secondary",
-                    title: "Pykara Lake & Waterfall",
-                    description: "Boating on the serene lake and short hike to the falls"
-                },
-                {
-                    time: "07:00 PM",
-                    icon: "fa-shopping-bag",
-                    iconColor: "accent",
-                    title: "Ooty Market & Farewell Dinner",
-                    description: "Shop for chocolates, oils, and teas before departure"
-                }
-            ]
-        }
-    ];
-    
-    // Generate itinerary day HTML
-    function generateDayHTML(day) {
-        let activitiesHTML = '';
-        
-        day.activities.forEach(activity => {
-            activitiesHTML += `
-                <div class="timeline-item">
-                    <div class="timeline-time">${activity.time}</div>
-                    <div class="timeline-content">
-                        <div class="timeline-icon ${activity.iconColor}">
-                            <i class="fas ${activity.icon}"></i>
-                        </div>
-                        <div class="timeline-details">
-                            <h5>${activity.title}</h5>
-                            <p>${activity.description}</p>
-                        </div>
-                    </div>
+
+    // Render default Day 1
+    itineraryContainer.innerHTML = `
+        <div class="day-block" data-day="1">
+            <h4 contenteditable="true">Day 1</h4>
+            <div class="activity" contenteditable="true">
+                <strong>Time:</strong> <br>
+                <strong>Title:</strong> <br>
+                <strong>Description:</strong>
+            </div>
+            <button class="add-activity-button">+ Add Activity</button>
+        </div>
+    `;
+
+    attachActivityButtonHandlers();
+
+    addDayButton.addEventListener('click', function () {
+        const currentDays = document.querySelectorAll('.day-block').length;
+        const newDayNum = currentDays + 1;
+
+        const newDayHTML = `
+            <div class="day-block animated-day" data-day="${newDayNum}">
+                <h4 contenteditable="true">Day ${newDayNum}</h4>
+                <div class="activity" contenteditable="true">
+                    <strong>Time:</strong> <br>
+                    <strong>Title:</strong> <br>
+                    <strong>Description:</strong>
                 </div>
-            `;
-        });
-        
-        return `
-            <div class="itinerary-card" draggable="true" data-id="${day.id}">
-                <div class="itinerary-day-header">
-                    <h4>${day.title}</h4>
-                    <div class="drag-handle">
-                        <i class="fas fa-grip-lines"></i>
-                    </div>
-                </div>
-                <div class="itinerary-day-content">
-                    ${activitiesHTML}
-                </div>
+                <button class="add-activity-button">+ Add Activity</button>
             </div>
         `;
-    }
-    
-    // Render initial itinerary days
-    function renderItinerary() {
-        itineraryContainer.innerHTML = '';
-        sampleDays.forEach(day => {
-            itineraryContainer.innerHTML += generateDayHTML(day);
-        });
-        setupDragAndDrop();
-    }
-    
-    // Set up drag and drop functionality
-    function setupDragAndDrop() {
-        const draggableItems = document.querySelectorAll('.itinerary-card');
-        let draggedItem = null;
-        
-        draggableItems.forEach(item => {
-            item.addEventListener('dragstart', function() {
-                draggedItem = this;
-                setTimeout(() => {
-                    this.style.opacity = '0.5';
-                    this.style.border = '2px dashed #1A73E8';
-                }, 0);
-            });
-            
-            item.addEventListener('dragend', function() {
-                this.style.opacity = '';
-                this.style.border = '';
-                draggedItem = null;
-            });
-            
-            item.addEventListener('dragover', function(e) {
-                e.preventDefault();
-            });
-            
-            item.addEventListener('dragenter', function(e) {
-                e.preventDefault();
-                if (this !== draggedItem) {
-                    this.classList.add('drag-over');
-                }
-            });
-            
-            item.addEventListener('dragleave', function() {
-                if (this !== draggedItem) {
-                    this.classList.remove('drag-over');
-                }
-            });
-            
-            item.addEventListener('drop', function(e) {
-                e.preventDefault();
-                if (this !== draggedItem) {
-                    const allItems = Array.from(itineraryContainer.querySelectorAll('.itinerary-card'));
-                    const draggedIndex = allItems.indexOf(draggedItem);
-                    const targetIndex = allItems.indexOf(this);
-                    
-                    if (draggedIndex < targetIndex) {
-                        itineraryContainer.insertBefore(draggedItem, this.nextSibling);
-                    } else {
-                        itineraryContainer.insertBefore(draggedItem, this);
-                    }
-                    
-                    // Update the sampleDays array to reflect the new order
-                    const movedDay = sampleDays.splice(draggedIndex, 1)[0];
-                    sampleDays.splice(targetIndex, 0, movedDay);
-                    
-                    // Rerender to update day numbers
-                    draggableItems.forEach(item => {
-                        this.classList.remove('drag-over');
-                    });
-                }
-            });
-        });
-    }
-    
-    // Add new day
-    addDayButton.addEventListener('click', function() {
-        const newDayId = sampleDays.length + 1;
-        const newDay = {
-            id: newDayId,
-            title: `Day ${newDayId} - Custom Day`,
-            activities: [
-                {
-                    time: "09:00 AM",
-                    icon: "fa-map-marker-alt",
-                    iconColor: "primary",
-                    title: "Add Your Activity",
-                    description: "Click to edit this activity"
-                }
-            ]
-        };
-        
-        sampleDays.push(newDay);
-        itineraryContainer.innerHTML += generateDayHTML(newDay);
-        setupDragAndDrop();
+
+        itineraryContainer.insertAdjacentHTML('beforeend', newDayHTML);
+        attachActivityButtonHandlers();
     });
-    
-    // Update itinerary destination
-    destinationSelect.addEventListener('change', function() {
+
+    function attachActivityButtonHandlers() {
+        const buttons = document.querySelectorAll('.add-activity-button');
+        buttons.forEach(button => {
+            button.onclick = function () {
+                const newActivity = document.createElement('div');
+                newActivity.className = 'activity';
+                newActivity.contentEditable = true;
+                newActivity.innerHTML = `
+                    <strong>Time:</strong> <br>
+                    <strong>Title:</strong> <br>
+                    <strong>Description:</strong>
+                `;
+                this.parentElement.insertBefore(newActivity, this);
+            };
+        });
+    }
+
+    destinationSelect.addEventListener('change', function () {
         itineraryDestination.textContent = `Your ${this.value} Itinerary`;
     });
-    
-    // Travelers control
-    decreaseTravelersBtn.addEventListener('click', function() {
+
+    decreaseTravelersBtn.addEventListener('click', function () {
         const currentValue = parseInt(travelersInput.value);
         if (currentValue > 1) {
             travelersInput.value = currentValue - 1;
         }
     });
-    
-    increaseTravelersBtn.addEventListener('click', function() {
+
+    increaseTravelersBtn.addEventListener('click', function () {
         const currentValue = parseInt(travelersInput.value);
         travelersInput.value = currentValue + 1;
     });
-    
-    // Initialize
-    renderItinerary();
+
+    // Share & Export buttons
+    const generateBtn = document.querySelector('.primary-button.w-full');
+    generateBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        generateBtn.innerText = "Generated! Kindly share & export.";
+        generateBtn.style.backgroundColor = "green";
+        generateBtn.style.color = "white";
+
+        const destination = document.getElementById('destination').value;
+        itineraryDestination.textContent = `Your ${destination} Itinerary`;
+
+        const actionButtons = document.querySelector('.action-buttons');
+        if (actionButtons) {
+            actionButtons.style.display = 'flex';
+        }
+
+        const shareBtn = document.querySelector('.icon-button.share');
+        const exportBtn = document.querySelector('.icon-button.export');
+
+        if (shareBtn) {
+            shareBtn.onclick = async function () {
+                const text = document.getElementById('itinerary-container').innerText;
+                const blob = new Blob([text], { type: 'text/plain' });
+                const file = new File([blob], 'TripGenie_Itinerary.txt', { type: 'text/plain' });
+
+                const shareData = {
+                    title: "My TripGenie Itinerary",
+                    text: text,
+                    files: [file],
+                    url: window.location.href
+                };
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (err) {
+                        console.log('Share failed:', err);
+                    }
+                } else {
+                    await navigator.clipboard.writeText(text);
+                    alert("Itinerary copied to clipboard! File sharing is not supported on this device.");
+                }
+            };
+        }
+
+        if (exportBtn) {
+            exportBtn.onclick = function () {
+                const text = document.getElementById('itinerary-container').innerText;
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'TripGenie_Itinerary.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+        }
+    });
 }
+
+
+
 
 // Destinations functionality
 function initDestinations() {
@@ -1327,6 +1216,7 @@ setInterval(() => {
   currentGlow = (currentGlow + 1) % glowClasses.length;
   textElement.classList.add(glowClasses[currentGlow]);
 }, 5000); // every 5 seconds, matches slideshow timing
+
 
 
 // Signup Form
