@@ -197,108 +197,115 @@
         </div>
     </section>
 
-    <!-- Itinerary Planner Section -->
+        <!-- Itinerary Planner Section -->
     <section id="itinerary-section">
-        <div class="container">
-            <div class="section-badge" data-aos="fade-up">INTERACTIVE PLANNER</div>
-            <div class="section-header" data-aos="fade-up">
-                <h2 id="Itinerary-heading">Create Your Perfect Itinerary</h2>
-                <p id="Itinerary-heading">Drag and drop activities to build your ideal trip schedule.</p>
+    <div class="container">
+        <div class="section-badge" data-aos="fade-up">INTERACTIVE PLANNER</div>
+        <div class="section-header" data-aos="fade-up">
+        <h2 id="Itinerary-heading">Create Your Perfect Itinerary</h2>
+        <p id="Itinerary-heading">Drag and drop activities to build your ideal trip schedule.</p>
+        </div>
+
+        <div class="itinerary-layout">
+        <div class="itinerary-sidebar" data-aos="fade-right">
+            <div class="itinerary-form">
+            <h3>Trip Details</h3>
+
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <select id="destination" class="form-control">
+                <option value="Ooty">Ooty, India</option>
+                <option value="Bali">Bali, Indonesia</option>
+                <option value="Paris">Paris, France</option>
+                </select>
             </div>
-            
-            <div class="itinerary-layout">
-                <div class="itinerary-sidebar" data-aos="fade-right">
-                    <div class="itinerary-form">
-                        <h3>Trip Details</h3>
-                        
-                        <div class="form-group">
-                            <label for="destination">Destination</label>
-                            <select id="destination" class="form-control">
-                                <option value="Ooty">Ooty, India</option>
-                                <option value="Bali">Bali, Indonesia</option>
-                                <option value="Paris">Paris, France</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="startDate">Start Date</label>
-                                <input type="date" id="startDate" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="endDate">End Date</label>
-                                <input type="date" id="endDate" class="form-control">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Travelers</label>
-                            <div class="number-input">
-                                <button id="decreaseTravelers" class="number-button">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <input type="text" id="travelers" class="number-control" value="2" readonly>
-                                <button id="increaseTravelers" class="number-button">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Travel Style</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox">
-                                    <input type="checkbox" checked>
-                                    <span class="checkbox-text">Adventure</span>
-                                </label>
-                                
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    <span class="checkbox-text">Culture</span>
-                                </label>
-                                
-                                <label class="checkbox">
-                                    <input type="checkbox" checked>
-                                    <span class="checkbox-text">Relaxation</span>
-                                </label>
-                                
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    <span class="checkbox-text">Food & Drink</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <button class="primary-button w-full">
-                            <i class="fas fa-magic mr-2"></i> Generate Itinerary
-                        </button>
-                        
-                        <div class="action-buttons">
-                            <button class="icon-button">
-                                <i class="fas fa-share-alt"></i>
-                                <span>Share</span>
-                            </button>
-                            <button class="icon-button">
-                                <i class="fas fa-file-export"></i>
-                                <span>Export</span>
-                            </button>
-                        </div>
-                    </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" class="form-control">
                 </div>
-                
-                <div class="itinerary-content" data-aos="fade-left">
-                    <h3 id="itineraryDestination">Your Ooty Itinerary</h3>
-                    
-                    <div id="itinerary-container" class="itinerary-container">
-                        <!-- Itinerary cards will be added dynamically via JavaScript -->
-                    </div>
-                    
-                    <button id="addDayButton" class="dashed-button">
-                        <i class="fas fa-plus mr-2"></i> Add Another Day
-                    </button>
+                <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" class="form-control">
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label>Travelers</label>
+                <div class="number-input">
+                <button id="decreaseTravelers" class="number-button">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <input type="text" id="travelers" class="number-control" value="2" readonly>
+                <button id="increaseTravelers" class="number-button">
+                    <i class="fas fa-plus"></i>
+                </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Travel Style</label>
+                <div class="checkbox-group">
+                <label class="checkbox">
+                    <input type="checkbox" checked>
+                    <span class="checkbox-text">Adventure</span>
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox">
+                    <span class="checkbox-text">Culture</span>
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" checked>
+                    <span class="checkbox-text">Relaxation</span>
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox">
+                    <span class="checkbox-text">Food & Drink</span>
+                </label>
+                </div>
+            </div>
+
+            <button class="primary-button w-full">
+                <i class="fas fa-magic mr-2"></i> Generate Itinerary
+            </button>
+
+            <div class="action-buttons">
+                <button class="icon-button share">
+                <i class="fas fa-share-alt"></i>
+                <span>Share</span>
+                </button>
+                <button class="icon-button export">
+                <i class="fas fa-file-export"></i>
+                <span>Export</span>
+                </button>
+            </div>
             </div>
         </div>
+
+        <div class="itinerary-content" data-aos="fade-left">
+            <h3 id="itineraryDestination">Your Itinerary</h3>
+
+            <div id="itinerary-container" class="itinerary-container">
+                <div class="day-block animated-day" data-day="1">
+                    <h4 contenteditable="true" class="editable-heading">Day 1</h4>
+
+                    <div class="activity editable" contenteditable="true" data-placeholder="Enter time, title, description..."></div>
+
+                    <button class="add-activity-button">+ Add Activity</button>
+                </div>
+            </div>
+
+
+            <button id="addDayButton" class="dashed-button">
+            <i class="fas fa-plus mr-2"></i> Add Another Day
+            </button>
+        </div>
+        </div>
+    </div>
     </section>
 
     <!-- Destinations Section -->
@@ -787,6 +794,7 @@
     </div>
     </div>
 
+    
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     
