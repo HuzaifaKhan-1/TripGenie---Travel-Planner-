@@ -1317,3 +1317,13 @@ function initVoiceModal() {
     // Initialize speech recognition
     initSpeechRecognition();
 }
+
+const textElement = document.getElementById('hero3DText');
+let glowClasses = ['glow-1', 'glow-2', 'glow-3', 'glow-4'];
+let currentGlow = 0;
+
+setInterval(() => {
+  textElement.classList.remove(...glowClasses);
+  currentGlow = (currentGlow + 1) % glowClasses.length;
+  textElement.classList.add(glowClasses[currentGlow]);
+}, 5000); // every 5 seconds, matches slideshow timing
