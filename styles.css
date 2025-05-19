@@ -2802,10 +2802,6 @@ video {
   color: #333;
 }
 
-.blurred {
-  filter: blur(5px);
-
-}
 
 
 .custom-cursor {
