@@ -130,7 +130,21 @@
                     <a href="#itinerary-section">
                         <button class="primary-button">Start Planning Now</button>
                     </a>
-                    <button class="secondary-button"><i class="fas fa-play-circle mr-2"></i> Watch How It Works</button>
+                    <button class="secondary-button" onclick="openVideo()">
+                        <i class="fas fa-play-circle mr-2"></i> Watch How It Works
+                    </button>
+
+                    <div class="modal" id="videoModal">
+                        <div class="modal-content">
+                        <span class="close-btn" onclick="closeVideo()">&times;</span>
+                        <video id="myVideo" controls>
+                            <source src="TripGenie Guide.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        </div>
+                    </div>
+
+                    
                 </div>
             </div>
             
@@ -666,13 +680,13 @@
                 <div class="cta-content" data-aos="fade-up">
                     <h2>Ready to Plan Your Dream Trip?</h2>
                     <p>Get started today and let TripGenie help you create memorable travel experiences.</p>
-                    
+
                     <a href="#itinerary-section">
                         <button class="cta-button ">
                         <i class="fas fa-magic mr-2"></i> Start Planning Now
                     </button>
                     </a>
-                    
+
                 </div>
             </div>
         </div>
