@@ -1202,3 +1202,49 @@ window.onclick = function(e) {
     closeVideo();
   }
 }
+
+
+// Cursor effects
+const coords = { x: 0, y: 0};
+const circles = document.querySelectorAll(".circle");
+
+circles.forEach(function (circle) {
+    circle.x = 0;
+    circle.y = 0;
+});
+
+window.addEventListener("mousemove", function(e){
+    coords.x = e.clientX;
+    coords.y = e.clientY;
+
+    
+});
+
+
+const cursor = document.querySelector('.custom-cursor');
+  let mouseX = 0, mouseY = 0;
+  let currentX = 0, currentY = 0;
+  const speed = 0.2; // Speed of smoothing
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  window.addEventListener('mousedown', () => {
+    cursor.style.transform += ' scale(1.5)';
+    });
+    window.addEventListener('mouseup', () => {
+    cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    });
+
+  function animate() {
+    currentX += (mouseX - currentX) * speed;
+    currentY += (mouseY - currentY) * speed;
+
+    cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
