@@ -1178,3 +1178,27 @@ showSignupBtn.addEventListener('click', function () {
   signupSection.classList.remove('hidden');
 });
 
+
+const modal = document.getElementById("videoModal");
+const video = document.getElementById("myVideo");
+const content = document.getElementById("mainContent");
+
+function openVideo() {
+  modal.style.display = "flex";
+  content.classList.add("blurred");
+  video.play();
+}
+
+function closeVideo() {
+  modal.style.display = "none";
+  content.classList.remove("blurred");
+  video.pause();
+  video.currentTime = 0;
+}
+
+// Close modal if clicked outside the video area
+window.onclick = function(e) {
+  if (e.target === modal) {
+    closeVideo();
+  }
+}
